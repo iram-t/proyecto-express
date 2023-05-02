@@ -5,8 +5,8 @@ const mysql = require('mysql');
 //DB connection credentials
 const config = {
     host: 'localhost',
-    user: 'api',
-    password: 'api',
+    user: 'root',
+    password: 'root',
     database: 'api',
 };
 
