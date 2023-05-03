@@ -1,11 +1,10 @@
-//usar nom install mysql, se va a mandar a ubuntu
 //En windows sql server 
 const mysql = require('mysql');
 
 //DB connection credentials
 const config = {
     host: 'localhost',
-    user: 'root',
+    user: 'root', //cambiar usuario y la contraseña cuando lo tenga que subirlo a ubuntu
     password: 'password',
     database: 'api',
 };
