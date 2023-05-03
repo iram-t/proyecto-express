@@ -2,7 +2,7 @@
 const pool = require('../data/config');
 
 //Ruta de la app
-const router = app => {
+const routes = app => {
     app.get('/', (request, response) => {
         response.send({
             message: 'Bienvenido a Node.js Express REST API!'
@@ -16,6 +16,6 @@ const router = app => {
         });
     });
 }
-module.exports = router;
+module.exports = routes;
 
 //crear la base de datos api y poner el nombre de la tabla users en MySQL
