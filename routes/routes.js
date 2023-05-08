@@ -9,7 +9,7 @@ const routes = app => {
             message: 'Bienvenido a Node.js Express REST API!'
         });
     });
-    //Mostrar todos los usuarios
+    //Tabla Usuarios
     app.get('/users', (request, response) => {
         pool.query('SELECT * FROM users', (error, result) => {
             if (error) throw error;
@@ -41,6 +41,43 @@ const routes = app => {
     app.delete('/users/:id', (request,response) =>{
         const id = request.params.id;
         pool.query('DELETE FROM users WHERE id = ?', id, (error, result) => {
+            if (error) throw error;
+            response.send('User Deleted.')
+        });
+    });
+    ////////////////////////////////////////////////////////////////////////////
+    //tabla Productos
+    app.get('/productos', (request, response) => {
+        pool.query('SELECT * FROM productos', (error, result) => {
+            if (error) throw error;
+            response.send(result);
+        });
+    });
+    app.get('/productos/:id', (request, response) => {
+        const id = request.params.id;
+    
+        pool.query('SELECT * FROM productos Where id = ?', id, (err, res) => {
+            response.send(res);
+        })
+    });
+
+    app.post('/productos', (request, response) =>{ //Instalar postman
+        pool.query('INSERT INTO productos SET ?', request.body, (error, result) =>{
+            if (error) throw error;
+            response.status(201).send(`User added wid ID: ${result.insertID}`);
+        });
+    });
+    app.put ('/productos/id', (request, response) =>{
+        const id = request.params.id;
+        pool.query('UPDATE productos SET ? WHERE id = ?' [request.body, id], (error, result) => {
+            if (error) throw error;
+            response.send('User update successfully');
+        });
+    });
+
+    app.delete('/productos/:id', (request,response) =>{
+        const id = request.params.id;
+        pool.query('DELETE FROM productos WHERE id = ?', id, (error, result) => {
             if (error) throw error;
             response.send('User Deleted.')
         });
